@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Generate Random Quote and Change the Background</h1>
+    </header>
+
+    <main>
+        <button id="btnChangeStuff">Generate Quote</button>
+        <div id="divQuote"></div>
+    </main>
+
+    <!-- TODO: move to external .js file -->
+    <script>
+        // make sure that the page has fully loaded all HTML elements before we run any jQuery or JavaScript code
+        $(document).ready(function(){
+            // an array of background colors
+            let arrColors = ['red', 'blue', 'green', 'yellow', 'violet', 'orange', 'lightgray'];
+
+            // an array of quotes
+            let arrQuotes = [
+                "Life is what happens when you're busy making other plans.",
+                "The only way to do great work is to love what you do.",
+                "You miss 100% of the shots you don't take.",
+                "The best way to predict the future is to invent it."
+            ];
+
+            // wire up the click event for the button to display the quote and change the background color
+            $('#btnChangeStuff').click(function(){
+                // get a random color
+                let randomColor = arrColors[Math.floor(Math.random() * arrColors.length)];
+
+                // get a random quote
+                let randomQuote = arrQuotes[Math.floor(Math.random() * arrQuotes.length)];
+
+                // jQuery version of changing the background color of the page
+                $('body').css('background-color', randomColor);
+
+                // show a random quote in the div
+                $('#divQuote').text(randomQuote);
+            });
+        });
+    </script>
+</body>
+</html>
